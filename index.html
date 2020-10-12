@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!--Including bootstrap through the following link-->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <style>body{background-color:aquamarine;}</style>
+
+    <script src="angular.min.js"></script>
+    <script src="app.js"></script>
+    <title>filter</title>
+  </head>
+  <body ng-app = 'ewaste' style="font-size:medium">
+    
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container-fluid">
+            <div class="collapse navbar-collapse" id="myNavbar" >
+                <ul class="nav navbar-nav navbar-right">
+                  <li class="active">
+                   <li><a href="index.html">Home</a></li>
+                   <li><a href="about.html">About </a></li>
+                   <li><a href="howitworks.html">How It Works</a></li>
+                   <li class="dropdown">
+                       <a href=" "class = "dropdown-toggle" data-toggle="dropdown">Dispose your e-waste</a>
+                        <ul class="dropdown-menu">
+                            <li><a href="manufacturer.html">Manufacturers</a></li>
+                            <li><a href="stategovt.html">State Governments</a></li>
+                            <li><a href="industryclusters.html">Industry Clusters</a></li>
+                            <li><a href="individuals.html">Individuals</a></li>
+                            
+                        </ul>
+                    </li>
+                    <li><a href="guidelines.html">Policy and Forms</a></li>
+                    <li><a href="recycler.html">Recyclers</a></li>
+                    
+                     <li><a href="contact.html">Contact us </a></li></li>
+                    </div>
+                </div> </nav>
+                <br/><br/>
+                <div class="container" style="margin-top:60px">
+                    <div class="container" style="text-align: center;"><h1>E-WASTE RECYCLING</h1></div>
+                    <div class = "well well-lg">
+                        <div class = "row">
+                            <div class = "col-md-6" ng-controller = 'benefitController'>
+                                <center><h3><B>Benefits</B></h3></center>
+                                <br/><br/>
+                                <div>
+                                    <ul>
+                                        <li ng-repeat = "x in benefits">
+                                            {{x}}
+                                        </li>
+                                    </ul>
+                                </div><br/>
+                        </div>
+                        <div class = "col-md-6">
+                            <img src = "steps.png" height="400" width="550" style="padding-right: 15px;">
+                            
+                        </div>
+
+                        <!--Mouse Over and Mouse Leave events -->
+                        <!--Text displayed when mouse overs the image and it will be hide whenever mouse leaves from the image-->
+                        <div class = "container">
+                        
+                            <img src = "convenient.png" ng-mouseover = "show1 = true" ng-mouseleave="show1 = false">
+                            <span ng-show = "show1">Convenient</span>
+
+                            <img src = "transparent.png" ng-mouseover = "show2 = true" ng-mouseleave="show2 = false">
+                            <span class="show2" ng-show = "show2">Transparent</span>
+
+                            <img src = "sustainable.png" ng-mouseover = "show3 = true" ng-mouseleave="show3 = false">
+                            <span  class="show3" ng-show = "show3">Sustainable</span>
+
+                            <img src = "economical.png" ng-mouseover = "show4 = true" ng-mouseleave="show4 = false">
+                            <span class="show4" ng-show = "show4">Economical</span>
+                        </div>
+                            
+                    </div>
+
+                </div></div>
+
+                <div class="container">
+                    <div class = "well well-lg">
+                    <div class = "row">
+                        <div class = "col-md-6">
+                            <img src = "picinheritance.png" height="400" width="550" style="padding-left : 15px;">
+                        </div>
+                        <div class = "col-md-6">
+                        <div ng-controller = "parentServiceController as parent">
+                        <div ng-controller= "childProductController as child">
+                            <h3 style="padding-left: 15px;"><U>Services</U></h3>
+                            <ul style="padding-right: 5px;"><li ng-repeat = "x in parent.services">{{x}}</li></ul>
+                            
+                            <h3 style="padding-left: 15px;"><U>Products</U></h3>
+                            <ul style="padding-right: 5px;"><li ng-repeat = "y in child.products">{{y}}</li></ul>
+                        </div>
+                    </div>
+                    </div>
+                </div>
+
+                </div></div>
+                
+                <br/><br/>
+                <div>
+                    <footer-directive></footer-directive>
+                </div>
+  </body>
+  
+</html>

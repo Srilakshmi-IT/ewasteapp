@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!--Including bootstrap through the following link-->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <style>body{background-color:aquamarine;}</style>
+
+    <script src="angular.min.js"></script>
+    <script src="app.js"></script>
+    <title>filter</title>
+  </head>
+  <body ng-app = 'ewaste' style="font-size:medium">
+    
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container-fluid">
+            <div class="collapse navbar-collapse" id="myNavbar" >
+                <ul class="nav navbar-nav navbar-right">
+                  <li class="active">
+                   <li><a href="index.html">Home</a></li>
+                   <li><a href="about.html">About </a></li>
+                   <li><a href="howitworks.html">How It Works</a></li>
+                   <li class="dropdown">
+                       <a href=" "class = "dropdown-toggle" data-toggle="dropdown">Dispose your e-waste</a>
+                        <ul class="dropdown-menu">
+                            <li><a href="manufacturer.html">Manufacturers</a></li>
+                            <li><a href="stategovt.html">State Governments</a></li>
+                            <li><a href="industryclusters.html">Industry Clusters</a></li>
+                            <li><a href="individuals.html">Individuals</a></li>
+                        </ul>
+                    </li>
+                   
+                     <li><a href="guidelines.html">Policy and Forms</a></li>
+                    <li><a href="recycler.html">Recyclers</a></li>
+                     <li><a href="contact.html">Contact us </a></li></li>
+                    </div>
+                </div> </nav>
+                <br/><br/>
+                <div class="container">
+                    
+                        <div style="text-align: center;">
+                            <h2>Recyclers</h2>
+                        <h3>We invite Recyclers to join with us: E- Waste Exchange to get unhampered supply raw material.</h3>
+                    </div>
+                    <hr>
+                    <div style="text-align: center;"><h2 style="border-style: solid;">Connect us with now</h2></div><br/>
+                    <div controller = "recyclerController">
+                    <form  name = "recyclerform" novalidate>
+                        <div class="container">
+                            <div class="form-group row">
+                                <label for="name" class="col-sm-5 col-form-label" >Name : </label>
+                                <input type="text" name = "name" ng-model = "recy.name" class="col-sm-4" placeholder="Enter your name" ng-required="true"/>
+                                <span style="color: red;" ng-show = "recyclerform.name.$dirty && recyclerform.name.$invalid">
+                                <span ng-show = "recyclerform.name.$error.required">Name is required</span>
+                            </span>
+                            </div>
+                            <div class="form-group row">
+                                <label for="email" class="col-sm-5 col-form-label" >Email : </label>
+                                <input type="email" name = "email" ng-model = "recy.email" class="col-sm-4" placeholder="Enter your email" ng-required="true">
+                                <span ng-show = "recyclerform.email.$dirty && recyclerform.email.$invalid ">
+                                <span style = "color: red;" ng-show = "recyclerform.email.$error.required">Email is required</span>
+                                <span style = "color: orangered;" ng-show = "recyclerform.email.$error.email">Enter a valid email address</span> 
+
+                                </span>
+                            </div>
+                            <div class="form-group row">
+                                <label for="phone" class="col-sm-5 col-form-label" >Phone number : </label>
+                                <input type="number" ng-minlength ="10" ng-maxlength = "10" name = "phone" ng-model = "recy.phone" class="col-sm-4" placeholder="Enter your phone number" ng-required="true">
+                                <span ng-show = "recyclerform.phone.$dirty && recyclerform.phone.$invalid ">
+                                    <span style="color: red;" ng-show = "recyclerform.phone.$error.required || recyclerform.phone.$error.number">Valid Phone number is required</span>
+                                <span style="color: orangered;" ng-show = "recyclerform.phone.$error.minlength || recyclerform.phone.$error.maxlength ">Only 10 digits are allowed</span>
+                                </span>
+                            </div>
+                            <div class="form-group row">
+                                <label for="message" class="col-sm-5 col-form-label" >Message : </label>
+                                <textarea rows="4" class="col-sm-4" ng-model="recy.message" placeholder="Enter message"></textarea>
+                            </div>
+                            
+                           
+                            <center><button ng-click = "adddetails(recy);" ng-disabled = "recyclerform.$invalid"  class = "btn btn-lg btn-primary">submit</button></center>
+                        </div>
+                        <br/>
+                    </form>
+                    <div style="text-align: center;">The details while entering <br/>
+                    {{recy.name | json | uppercase }}  {{recy.email | json}} {{recy.phone | json}}   {{recy.message | json}} </div><br/><br/>
+                 
+                    
+            </br>
+                <div style="text-align: center;" ng-controller = "dispController as disp"><b>All other Recyclers</b><br/> <br/>
+                    <ol><li ng-repeat = "x in disp.details">
+                        {{x.rname}} - {{x.remail}}
+                    </li>
+                    </ol>
+                  
+                    </div>
+                    
+                    
+                
+                   
+                </div>
+                <br/><br/>
+                <div>
+                    <footer-directive></footer-directive>
+                </div>
+  </body>
+  
+</html>

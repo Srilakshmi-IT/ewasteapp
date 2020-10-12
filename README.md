@@ -1,1 +1,1 @@
-# ewasteapp
+# angularjsapp
